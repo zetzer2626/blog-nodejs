@@ -15,6 +15,7 @@ A simple and modern blog application built with Node.js, Express, and Bootstrap.
 ## Technology Stack
 
 - **Backend**: Node.js, Express.js
+- **Database**: PostgreSQL (Railway)
 - **Frontend**: HTML5, CSS3, Bootstrap 5, JavaScript
 - **Templating**: EJS (Embedded JavaScript)
 - **Icons**: Bootstrap Icons
@@ -29,7 +30,15 @@ A simple and modern blog application built with Node.js, Express, and Bootstrap.
    npm install
    ```
 
-3. **Start the application**:
+3. **Database Setup**:
+   The application is configured to use PostgreSQL from Railway. The connection string is already configured in the code:
+   ```
+   postgres://postgres:jqQXHWMzHafjsgHtBvqYPlUNKlCottcQ@postgres.railway.internal:5432/railway
+   ```
+   
+   The database tables will be created automatically when you first run the application.
+
+4. **Start the application**:
    ```bash
    npm start
    ```
@@ -39,10 +48,18 @@ A simple and modern blog application built with Node.js, Express, and Bootstrap.
    npm run dev
    ```
 
-4. **Open your browser** and visit:
+5. **Open your browser** and visit:
    ```
    http://localhost:3000
    ```
+
+## Database Features
+
+- ✅ **Automatic table creation** on first run
+- ✅ **Sample blog posts** inserted automatically
+- ✅ **Connection pooling** for better performance
+- ✅ **Error handling** for database operations
+- ✅ **SSL support** for production environments
 
 ## Project Structure
 
@@ -51,6 +68,9 @@ blog-app/
 ├── app.js                 # Main Express application
 ├── package.json           # Dependencies and scripts
 ├── README.md             # This file
+├── config/               # Configuration files
+│   ├── database.js       # Database connection and setup
+│   └── env.js            # Environment configuration
 ├── views/                # EJS templates
 │   ├── partials/
 │   │   ├── header.ejs    # Common header
@@ -60,7 +80,8 @@ blog-app/
 │   ├── new.ejs           # Create new post form
 │   ├── edit.ejs          # Edit post form
 │   ├── about.ejs         # About page
-│   └── contact.ejs       # Contact page
+│   ├── contact.ejs       # Contact page
+│   └── error.ejs         # Error page
 └── public/               # Static files
     ├── css/
     │   └── style.css     # Custom styles
