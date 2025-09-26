@@ -3,9 +3,19 @@ require('dotenv').config();
 
 // Database configuration
 const dbConfig = {
-    connectionString: process.env.DATABASE_URL || 'postgres://postgres:jqQXHWMzHafjsgHtBvqYPlUNKlCottcQ@postgres.railway.internal:5432/railway',
-    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+    connectionString: process.env.DATABASE_URL || 'postgresql://postgres:jqQXHWMzHafjsgHtBvqYPlUNKlCottcQ@containers-us-west-146.railway.app:5432/railway',
+    ssl: process.env.NODE_ENV === 'production' || process.env.RAILWAY_ENVIRONMENT ? { rejectUnauthorized: false } : false,
+    max: 20,
+    idleTimeoutMillis: 30000,
+    connectionTimeoutMillis: 2000,
 };
+
+// Log database configuration (without sensitive data)
+console.log('🔧 Database configuration:');
+console.log(`   - Host: ${dbConfig.connectionString.split('@')[1]?.split(':')[0] || 'localhost'}`);
+console.log(`   - Port: ${dbConfig.connectionString.split(':')[3]?.split('/')[0] || '5432'}`);
+console.log(`   - Database: ${dbConfig.connectionString.split('/')[3] || 'unknown'}`);
+console.log(`   - SSL: ${dbConfig.ssl ? 'enabled' : 'disabled'}`);
 
 // Create connection pool
 const pool = new Pool(dbConfig);

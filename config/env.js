@@ -4,8 +4,8 @@ require('dotenv').config();
 const config = {
     // Database configuration
     database: {
-        url: process.env.DATABASE_URL || 'postgres://postgres:jqQXHWMzHafjsgHtBvqYPlUNKlCottcQ@postgres.railway.internal:5432/railway',
-        host: process.env.DB_HOST || 'postgres.railway.internal',
+        url: process.env.DATABASE_URL || 'postgresql://postgres:jqQXHWMzHafjsgHtBvqYPlUNKlCottcQ@containers-us-west-146.railway.app:5432/railway',
+        host: process.env.DB_HOST || 'containers-us-west-146.railway.app',
         port: process.env.DB_PORT || 5432,
         name: process.env.DB_NAME || 'railway',
         user: process.env.DB_USER || 'postgres',
